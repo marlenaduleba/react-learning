@@ -30,16 +30,19 @@ function App() {
           <tr>
             <td>{formatting(list[0].firstname)}</td>
             <td>{formatting(list[0].lastname)}</td>
+            <td>{list[0].age}</td>
             <td>{isAdult(list[0].age)}</td>
           </tr>
           <tr>
             <td>{formatting(list[1].firstname)}</td>
             <td>{formatting(list[1].lastname)}</td>
+            <td>{list[1].age}</td>
             <td>{isAdult(list[1].age)}</td>
           </tr>
           <tr>
             <td>{formatting(list[2].firstname)}</td>
             <td>{formatting(list[2].lastname)}</td>
+            <td>{list[2].age}</td>
             <td>{isAdult(list[2].age)}</td>
           </tr>
         </tbody>
