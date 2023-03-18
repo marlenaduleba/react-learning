@@ -31,17 +31,47 @@ class Book extends Component {
       ],
     };
   }
+
+  updateBooks = () => {
+    this.setState({
+      books: [
+        {
+          title: "Hobbit",
+          author: "J. R. Tolkien",
+          pages: "455",
+        },
+        {
+          title: "Władca Pierścieni",
+          author: "J. R. Tolkien",
+          pages: "669",
+        },
+      ],
+    });
+  };
+
+  addNewBook = () => {
+    this.setState((prevState) => ({
+      books: [
+        ...prevState.books,
+        {
+          title: "Nowy wspaniały świat",
+          author: "A. Huxley",
+          pages: "255",
+        },
+      ],
+    }));
+  };
+
   render() {
     return (
       <div>
         <Header />
-
+        <button onClick={this.updateBooks}>
+          Pozostaw książki tylko Tolkiena
+        </button>
+        <button onClick={this.addNewBook}>Dodaj nową książkę</button>
         {this.state.books.map((book, i) => (
-          <BookDescription
-            key={i}
-          {...book}
-          deleteBook={this.deleteSingleBook}
-          />
+          <BookDescription key={i} book={book} />
         ))}
 
         <Footer />
