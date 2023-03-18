@@ -1,17 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Book from "./pages/book/Book";
+import Counter from "./components/counter/Counter";
 
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Book />
+    <Counter />
   </React.StrictMode>
 );
-
 
 
 // If you want to start measuring performance in your app, pass a function
