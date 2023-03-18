@@ -20,6 +20,12 @@ class Counter extends Component {
         this.setState({counter: 0});
     }
 
+    setValue = value => {
+        this.setState({
+            counter: value
+        });
+    }
+
     render() {
         return (
             <div>
@@ -30,9 +36,13 @@ class Counter extends Component {
                 <button onClick={this.decrease}>Zmniejsz o jeden</button>
                 <br />
                 <button onClick={this.clear}>Zeruj</button>
+                <br />
+                <button onClick={() => this.setValue(20)}>Podaj wartość</button>
+                
             </div>
         );
     }
 }
 
 export default Counter;
+
