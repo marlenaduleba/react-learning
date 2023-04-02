@@ -1,33 +1,53 @@
-import { useEffect, useState } from "react";
+import { Component } from "react";
 
-export const Counter = () => {
-  const [counter, setCounter] = useState(0);
+class Counter extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            counter: 0
+        };
+        
+    }
 
-useEffect(() => {
-    document.title = "Stan licznika wynosi " + counter;
-});
+    increase = () => {
+        this.setState((prevState) => ({
+            counter: prevState.counter + 1
+        }));
+    }
 
-  const increase = () => {
-    setCounter((prevState) => prevState + 1);
-  };
+    decrease = () => {
+        this.setState((prevState) => ({
+            counter: prevState.counter -1
+        }));
+    }
 
-  const decrease = () => {
-    setCounter((prevState) => prevState - 1);
-  };
+    clear = () => {
+        this.setState({
+            counter: 0
+        })
+    }
 
-  const clear = () => {
-    setCounter(0);
-  };
+    setValue = value => {
+        this.setState({
+            counter: value
+        })
+    }
 
-  return (
-    <div>
-      Stan licznika: {counter}
-      <br />
-      <button onClick={increase}>Zwiększ o jeden</button>
-      <br />
-      <button onClick={decrease}>Zmniejsz o jeden</button>
-      <br />
-      <button onClick={clear}>Zeruj</button>
-    </div>
-  );
-};
+    render() {
+        return (
+            <div>
+                Stan licznika: {this.state.counter}
+                <br />
+                <button onClick={this.increase}>Zwiększ o jeden</button>
+                <br />
+                <button onClick={this.decrease}>Zmniejsz o jeden</button>
+                <br />
+                <button onClick={this.clear}>Zeruj</button>
+                <br />
+                <button onClick={this.setValue(20)}>Podaj wartość</button>
+            </div>
+        )
+    }
+}
+
+export default Counter;
