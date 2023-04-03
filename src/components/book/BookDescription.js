@@ -18,12 +18,12 @@ BookDescription.propTypes = {
   deleteBook: PropTypes.func,
 };
 
-BookDescription.propTypes = {
+BookDescription.defaultProps = {
   book: {
     title: "Tytył Książki",
     author: "Autor Książki",
     pages: "Liczba stron",
-  },
+  }, 
 };
 
 export default BookDescription;

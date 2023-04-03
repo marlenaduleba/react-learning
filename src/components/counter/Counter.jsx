@@ -44,7 +44,7 @@ class Counter extends Component {
                 <br />
                 <button onClick={this.clear}>Zeruj</button>
                 <br />
-                <button onClick={this.setValue(20)}>Podaj wartość</button>
+                <button onClick={() => this.setValue(parseInt(prompt("Podaj wartość")))}>Podaj wartość</button>
             </div>
         )
     }
