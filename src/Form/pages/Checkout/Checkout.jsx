@@ -46,30 +46,55 @@ class Checkout extends Component {
       ...prevState,
       [inputName]: inputValue,
     }));
+  };
 
-    if (inputName === "firstname") {
-      if (inputName.length < 2) {
-        this.setState((prevState) => ({
-          errors: {
-            ...prevState.errors,
-            firstnameError: "Imię powinno mieć co najmniej 2 znaki",
-          },
-        }));
-      } else {
-        this.setState((prevState) => ({
-          errors: {
-            ...prevState.errors,
-            firstnameError: "",
-          },
-        }));
-      }
+  submissionHandler = (event) => {
+    let errorFound = false;
+    if (this.state.firstname.length < 2) {
+      errorFound = true;
+      this.setState((prevState) => ({
+        errors: {
+          ...prevState.errors,
+          firstnameError: "Imię powinno mieć co najmniej 2 znaki",
+        },
+      }));
+    } else {
+      this.setState((prevState) => ({
+        errors: {
+          ...prevState.errors,
+          firstnameError: "",
+        },
+      }));
+    }
+
+    if (this.state.lastname.length < 2) {
+      errorFound = true;
+      this.setState((prevState) => ({
+        errors: {
+          ...prevState.errors,
+          lastnameError: "Nazwisko powinno mieć co najmniej 2 znaki",
+        },
+      }));
+    } else {
+      this.setState((prevState) => ({
+        errors: {
+          ...prevState.errors,
+          lastnameError: "",
+        },
+      }));
+    }
+
+    if (errorFound) {
+      event.preventDefault();
+    } else {
+      console.log(this.state);
     }
   };
 
   render() {
     return (
       <Container>
-        <form>
+        <form onSubmit={this.submissionHandler}>
           <div className="form-group">
             <Row>
               <Col xs={12}>
@@ -164,6 +189,15 @@ class Checkout extends Component {
                   value={this.state.gift}
                   onChange={this.changeHandler}
                   error={this.state.errors.giftError}
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <MyInput
+                  type="submit"
+                  className="btn btn-primary btn-lg btn-block"
+                  value="Wyślij"
                 />
               </Col>
             </Row>
