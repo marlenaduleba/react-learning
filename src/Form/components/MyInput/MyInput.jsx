@@ -15,7 +15,10 @@ MyInput.propTypes = {
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool
+    ]),
     className: PropTypes.string,
     onChange: PropTypes.func
     
