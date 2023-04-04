@@ -1,16 +1,25 @@
 import React, { Component } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import MyInput from "../../components/MyInput/MyInput";
+import MySelect from "../../components/MySelect/MySelect";
 
 class Checkout extends Component {
+  paymentOptions = [
+    { id: "_", name: "____" },
+    { id: "pp", name: "PayPal" },
+    { id: "stripe", name: "Stripe" },
+    { id: "cc", name: "Karta kredytowa" },
+  ];
+
   constructor(props) {
     super(props);
     this.state = {
       firstname: "",
       lastname: "",
       street: "",
-      zip: "", 
-      city: ""
+      zip: "",
+      city: "",
+      paymentType: "",
     };
   }
 
@@ -84,6 +93,16 @@ class Checkout extends Component {
                   onChange={this.changeHandler}
                 />
               </Col>
+              <Col xs={12} md={4}>
+                <MySelect
+                  name="paymentType"
+                  label="Rodzaj płatności"
+                  className="form-control"
+                  value={this.state.paymentType}
+                  onChange={this.changeHandler}
+                  options={this.paymentOptions}
+                />
+              </Col>
             </Row>
           </div>
         </form>
@@ -104,12 +123,14 @@ class Checkout extends Component {
                 {this.state.street == "" ? "N/A" : this.state.street}
               </li>
               <li className="list-group-item">
-                Kod pocztowy:{" "}
-                {this.state.zip == "" ? "N/A" : this.state.zip}
+                Kod pocztowy: {this.state.zip == "" ? "N/A" : this.state.zip}
               </li>
               <li className="list-group-item">
-                Miasto:{" "}
-                {this.state.city == "" ? "N/A" : this.state.city}
+                Miasto: {this.state.city == "" ? "N/A" : this.state.city}
+              </li>
+              <li className="list-group-item">
+                Rodzaj płatności:{" "}
+                {this.state.paymentType == "" ? "N/A" : this.state.paymentType}
               </li>
             </ul>
           </Col>
